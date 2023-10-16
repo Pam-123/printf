@@ -1,58 +1,56 @@
 #include <stdarg.h>
+#include <unistd.h>
 #include "main.h"
-#include <stdio.h>
 
 /**
- * custom_printf - Custom printf function to print formatted output
- * @format: Format string containing format specifiers
- * @...: Additional arguments based on format specifiers
+ * _printf - Custom printf function to handle %c, %s, and %%
+ * @format: Format string
+ * @...: Variable number of arguments
+ *
+ * Return: Number of characters printed (excluding null byte)
  */
-void custom_printf(const char *format, ...)
+int _printf(const char *format, ...)
 {
-	va_list args;
+	va_list _my__args;
+	int compute = 0;
 
-	va_start(args, format);
-
-	while (*format != '\0')
+	va_start(_my__args, format);
+	while (format && *format)
 	{
 		if (*format == '%' && *(format + 1) != '\0')
 		{
 			format++;
 			switch (*format)
 			{
-				case 'd':
-					printf("%d", va_arg(args, int));
-					break;
-				case 's':
-					printf("%s", va_arg(args, char *));
-					break;
 				case 'c':
-					printf("%c", va_arg(args, int));
+					{
+						int value = va_arg(_my__args, int);
+						compute += write(1, &value, sizeof(int));
+						break;
+					}
+
+				case 's':
+					{
+						char *compute_string = va_arg(_my__args, char *);
+
+						if (compute_string)
+							compute += write(1, compute_string, _strlen(compute_string));
+						else
+							compute += write(1, "(null)", 6);
+					}
 					break;
 				case '%':
-					own_putchar('%');
+					compute += write(1, "%", 1);
 					break;
 				default:
-					own_putchar('%');
-					own_putchar(*format);
-					break;
+					compute += write(1, "%", 1);
+					compute += write(1, format, 1);
 			}
 		}
 		else
-	{
-			own_putchar(*format);
-		}
+			compute += write(1, format, 1);
 		format++;
 	}
-
-	va_end(args);
-}
-
-/**
- * own_putchar - Custom putchar function to print a single character
- * @c: Character to be printed
- */
-void own_putchar(char c)
-{
-	putchar(c);
+	va_end(_my__args);
+	return (compute);
 }
