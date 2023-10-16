@@ -3,11 +3,9 @@
 #include <stdio.h>
 
 /**
- * custom_printf - Printf function that is used to print
- * @format: This is a string
- * @... : more arguments can be added
- *
- * Return: Numbers of Chars Printed
+ * custom_printf - Custom printf function to print formatted output
+ * @format: Format string containing format specifiers
+ * @...: Additional arguments based on format specifiers
  */
 void custom_printf(const char *format, ...)
 {
@@ -31,12 +29,16 @@ void custom_printf(const char *format, ...)
 				case 'c':
 					printf("%c", va_arg(args, int));
 					break;
+				case '%':
+					own_putchar('%');
+					break;
 				default:
 					own_putchar('%');
 					own_putchar(*format);
+					break;
 			}
 		}
-	else
+		else
 	{
 			own_putchar(*format);
 		}
@@ -47,18 +49,10 @@ void custom_printf(const char *format, ...)
 }
 
 /**
- * main - Entry of the Program
- *
- * Return: 0
+ * own_putchar - Custom putchar function to print a single character
+ * @c: Character to be printed
  */
-
-int main(void)
+void own_putchar(char c)
 {
-	int num = 42;
-	char str[] = "Hello, World!";
-	char ch = 'A';
-
-	custom_printf("Integer: %d, String: %s, Character: %c\n", num, str, ch);
-
-	return (0);
+	putchar(c);
 }
