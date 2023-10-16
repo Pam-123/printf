@@ -1,11 +1,11 @@
-#include <unistd.h>
+#include "main.h"
 
 /**
  * own_putchar - custom putchar function
  *
- * Return: 0
+ * Return: nothing
  */
-int own_putchar(char c)
+void own_putchar(char c)
 {
-	return (write(1, &c, 1));
+	_putchar(c);
 }
