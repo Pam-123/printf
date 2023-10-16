@@ -1,15 +1,13 @@
-#include "main.h"
+#include <unistd.h>
 
 /**
- * printch_ar - function to be used to print chars using pointers
- * @_my__args: argument
+ * printch_ar - Prints a single character to the standard output
+ * @c: The character to be printed
  *
- * Return: Return 1
+ * Return: 1 on success, -1 on error
  */
-int printch_ar(va_list _my__args)
+int printch_ar(int c)
 {
-	char stringg;
-	stringg = va_arg(_my__args, int);
-	own_putchar(stringg);
-	return (1);
+	char ch = (char)c;
+	return (write(1, &ch, 1));
 }

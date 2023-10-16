@@ -12,9 +12,9 @@
 
 int own_putchar(char c);
 int _printf(const char *format, ...);
-int _strlen(char *compute_string);
-int printch_ar(va_list _my__args);
-int printstr_ingg(va_list _my__args);
+int _strlen(const char *s);
+int printch_ar(int c);
+int printstr_ingg(const char *s);
 int printper_cent(void);
 
 #endif

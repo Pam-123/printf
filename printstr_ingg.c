@@ -1,31 +1,19 @@
-#include "main.h"
+#include <unistd.h>
 
 /**
- * printstr_ingg - prints the string
- * @_my__args: argument
+ * printstr_ingg - Prints a string to the standard output
+ * @s: The string to be printed
  *
- * Return: Length
+ * Return: Number of characters printed (excluding null byte)
  */
-int printstr_ingg(va_list _my__args)
+int printstr_ingg(const char *s)
 {
-	char *str;
-	int b;
-	int length;
+	int compute = 0;
 
-	str = va_arg(_my__args, char *);
-	if (str == NULL)
+	while (*s != '\0')
 	{
-		str = "(null)";
-		length = _strlen(str);
-		for(b = 0; b < length; b++)
-			own_putchar(str[b]);
-		return (length);
+		compute += write(1, s, 1);
+		s++;
 	}
-	else
-	{
-		length =_strlen(str);
-		for (b = 0; b < length; b++)
-			own_putchar(str[b]);
-		return (length);
-	}
+	return (compute);
 }
