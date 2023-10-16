@@ -1,4 +1,5 @@
 #include <stdarg.h>
+#include "main.h"
 #include <stdio.h>
 
 /**
@@ -8,44 +9,56 @@
  *
  * Return: Numbers of Chars Printed
  */
-void custom_printf(const char *format, ...) {
-    va_list args;
-    va_start(args, format);
+void custom_printf(const char *format, ...)
+{
+	va_list args;
 
-    while (*format != '\0') {
-        if (*format == '%' && *(format + 1) != '\0') {
-            format++;
-            switch (*format) {
-                case 'd':
-                    printf("%d", va_arg(args, int));
-                    break;
-                case 's':
-                    printf("%s", va_arg(args, char *));
-                    break;
-                case 'c':
-                    printf("%c", va_arg(args, int));
-                    break;
-                default:
-                    own_putchar('%');
-                    own_putchar(*format);
-            }
-        }
+	va_start(args, format);
+
+	while (*format != '\0')
+	{
+		if (*format == '%' && *(format + 1) != '\0')
+		{
+			format++;
+			switch (*format)
+			{
+				case 'd':
+					printf("%d", va_arg(args, int));
+					break;
+				case 's':
+					printf("%s", va_arg(args, char *));
+					break;
+				case 'c':
+					printf("%c", va_arg(args, int));
+					break;
+				default:
+					own_putchar('%');
+					own_putchar(*format);
+			}
+		}
 	else
 	{
-            own_putchar(*format);
-        }
-        format++;
-    }
+			own_putchar(*format);
+		}
+		format++;
+	}
 
-    va_end(args);
+	va_end(args);
 }
 
-int main() {
-    int num = 42;
-    char str[] = "Hello, World!";
-    char ch = 'A';
+/**
+ * main - Entry of the Program
+ *
+ * Return: 0
+ */
 
-    custom_printf("Integer: %d, String: %s, Character: %c\n", num, str, ch);
+int main(void)
+{
+	int num = 42;
+	char str[] = "Hello, World!";
+	char ch = 'A';
 
-    return 0;
+	custom_printf("Integer: %d, String: %s, Character: %c\n", num, str, ch);
+
+	return (0);
 }
