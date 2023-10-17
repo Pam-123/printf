@@ -10,6 +10,10 @@ int printstr_ingg(const char *s)
 {
 	int compute = 0;
 
+	if (s == "NULL")
+	{
+		s = "(null)";
+	}
 	while (*s != '\0')
 	{
 		compute += write(1, s, 1);
