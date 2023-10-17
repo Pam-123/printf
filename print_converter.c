@@ -11,9 +11,6 @@ int (*converter(char spec))(va_list args)
 	print_format_t formats[] = {
 		{'c', char_print},
 		{'s', string_print},
-		{'i', integer_print},
-		{'o', octal_print},
-		{'x', hex_print},
 		{'%', percent_print},
 		{'\0', NULL}
 	};
