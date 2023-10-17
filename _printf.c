@@ -38,4 +38,3 @@ int _printf(const char *format, ...)
 	va_end(_args);
 	return (compute);
 }
-
