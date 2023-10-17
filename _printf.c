@@ -1,71 +1,41 @@
 #include <stdarg.h>
 #include "main.h"
-
-/**
- * _strlen - Computes the length of a string
- * @s: The input string
- * Return: Length of the string
- */
-int _strlen(const char *s)
-{
-	int len = 0;
-
-	while (*s)
-	{
-		len++;
-		s++;
-	}
-	return (len);
-}
+#include <unistd.h>
 
 /**
  * _printf - Custom printf function
- * @format: The format string
- * @...: Additional arguments
+ * @format: Format string containing %, %c, and %s
+ * @...: Variable number of arguments
+ *
  * Return: Number of characters printed (excluding null byte)
  */
 int _printf(const char *format, ...)
 {
-	va_list _my_args;
+	va_list _args;
 	int compute = 0;
+	char *str;
 
-	if (format == NULL)
+	va_start(_args, format);
+	while (*format)
 	{
-		return (-1);
-	}
-
-	va_start(_my_args, format);
-
-	while (format && *format)
-	{
-		if (*format == '%' && *(format + 1))
+		if (*format == '%')
 		{
-			format++;
-			switch (*format)
-			{
-				case 'c':
-					compute += printch_ar(va_arg(_my_args, int));
-					break;
-				case 's':
-					compute += printstr_ingg(va_arg(_my_args, char *));
-					break;
-				case '%':
-					compute += printch_ar('%');
-					break;
-				default:
-					compute += printch_ar('%');
-					compute += printch_ar(*format);
-					break;
-
-			}
+			++format;
+			if (*format == 'c')
+				compute += own_putchar(va_arg(_args, int));
+			else if (*format == 's')
+				for (str = va_arg(_args, char *); *str; ++str)
+					compute += own_putchar(*str);
+			else if (*format == '%')
+				compute += own_putchar('%');
 		}
 		else
 		{
-			compute += printch_ar(*format);
+			compute += own_putchar(*format);
 		}
-		format++;
+		++format;
 	}
-
-	va_end(_my_args);
+	va_end(_args);
 	return (compute);
 }
+
