@@ -1,12 +1,11 @@
 #include <unistd.h>
 
 /**
- * op_putchar - super printing function
- * @p: variable
- *
+ * op_putchar - tis prints chararter
+ * @c: variable
  * Return: 0
  */
-int op_putchar(char p)
+int op_putchar(char c)
 {
-	return (write(1, &p, 1));
+	return (write(1, &c, 1));
 }

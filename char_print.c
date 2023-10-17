@@ -1,15 +1,14 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdarg.h>
 
 /**
- * char_print - Print a character using %c specifier
- * @final_args: List containing the character to print
+ * char_print - Prints a character
+ * @args: Argument list containing the character to print
  * Return: Number of characters printed
  */
-int char_print(va_list final_args)
+int char_print(va_list args)
 {
-	char c = va_arg(final_args, int);
+	char b = va_arg(args, int);
 
-	return (op_putchar(c));
+	return (op_putchar(b));
 }

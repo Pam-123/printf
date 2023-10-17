@@ -1,19 +1,23 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdarg.h>
 
 /**
- * string_print - Print a string using %s specifier
- * @args: List containing the string to print
- * Return: Number of characters printed (excluding null byte)
+ * string_print - Prints a string
+ * @args: Argument list containing the string to print
+ * Return: Number of characters printed
  */
 int string_print(va_list args)
 {
-	char *str = va_arg(args, char*);
+	char *str = va_arg(args, char *);
+	int compute = 0;
 
 	if (str == NULL)
+		str = "(null)";
+
+	while (*str)
 	{
-		return (printf("(null)"));
+		compute += op_putchar(*str);
+		str++;
 	}
-	return (printf("%s", str));
+	return (compute);
 }

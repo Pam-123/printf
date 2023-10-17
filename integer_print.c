@@ -1,15 +1,17 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdarg.h>
 
 /**
- * integer_print - Print an integer using %i specifier
- * @final_args: List containing the integer to print
- * Return: Number of characters printed
+ * integer_print - Prints an integer
+ * @args: Argument list containing the integer to print
+ * Return: Number of digits printed
  */
-int integer_print(va_list final_args)
+int integer_print(va_list args)
 {
-	int comp = va_arg(final_args, int);
+	int compute = 0;
+	int num = va_arg(args, int);
+	(void) num;
 
-	return (printf("%d", comp));
+	return (compute);
 }
+
