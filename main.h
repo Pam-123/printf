@@ -11,6 +11,7 @@
 
 
 int own_putchar(char c);
+int printNumbers(int positiveNumber, int negativeNumber);
 int _printf(const char *format, ...);
 int (*converter(char op))(va_list);
 int string_print(va_list your_op_args);
