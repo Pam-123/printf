@@ -2,10 +2,11 @@
 
 /**
  * own_putchar - custom putchar function
+ * @c: variable to print
  *
  * Return: nothing
  */
 int own_putchar(char c)
 {
-	return (write(1 ,&c ,1));
+	return (write(1, &c, 1));
 }
