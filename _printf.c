@@ -11,15 +11,12 @@
  */
 int _printf(const char *format, ...)
 {
-	int compute = 0;
-	char *str;
-	int my_strlen = 0;
-	char c;
+	int compute, my_strlen = 0;
+	char *str, c;
 	va_list final_args;
 
 	if (format == NULL)
 		return (-1);
-
 	va_start(final_args, format);
 
 	while (*format)
@@ -52,7 +49,6 @@ int _printf(const char *format, ...)
 		}
 		format++;
 	}
-
 	va_end(final_args);
 	return (compute);
 }
