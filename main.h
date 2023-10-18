@@ -13,6 +13,7 @@ typedef struct arg
 	int (*b)();
 } arguments;
 
+int format_str(const char *format, arguments func_list[], va_list list);
 int char_print(va_list args);
 int rev_print(va_list final_args);
 int percent_print(void);

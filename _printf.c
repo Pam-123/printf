@@ -1,54 +1,85 @@
-#include <unistd.h>
-#include <stdarg.h>
 #include "main.h"
 
 /**
- * _printf - Custom printf function
- * @format: Format string
- * @...: Variable number of arguments
+ * format_str - receives a format string and a list of conversion functions
+ * and arguments, and prints the formatted string
  *
- * Return: Number of characters printed (excluding null byte)
+ * @format: null-terminated string containing the characters to be printed
+ * @func_list: array of conv structs that map format specifiers
+ * to conversion functions
+ * @list: va_list of arguments to be printed
+ * Return: total number of characters printed
  */
-int _printf(const char *format, ...)
+
+int format_str(const char *format, arguments func_list[], va_list list)
 {
-	int compute, my_strlen = 0;
-	char *str, c;
-	va_list final_args;
+	int _i, _j, r, r_chars;
 
-	if (format == NULL)
-		return (-1);
-	va_start(final_args, format);
-
-	while (*format)
+	r_chars = 0;
+	for (_i = 0; format[_i] != '\0'; _i += 1)
 	{
-		if (*format != '%')
+		if (format[_i] == '%')
 		{
-			write(1, format, 1);
-			compute++;
+			for (_j = 0; func_list[_j].my != NULL; _j += 1)
+			{
+				if (format[_i + 1] == func_list[_j].my[0])
+				{
+					r = func_list[_j].b(list);
+					if (r == -1)
+						return (-1);
+					r_chars += r;
+					break;
+				}
+			}
+			if (func_list[_j].my == NULL && format[_i + 1] != ' ')
+			{
+				if (format[_i + 1] != '\0')
+				{
+					op_putchar(format[_i]);
+					op_putchar(format[_i + 1]);
+					r_chars += 2;
+				}
+				else
+					return (-1);
+			}
+			_i += 1;
 		}
 		else
 		{
-			format++;
-			if (*format == 'c')
-			{
-				c = va_arg(final_args, int);
-				write(1, &c, 1);
-				compute++;
-			}
-			else if (*format == 's')
-			{
-				str = va_arg(final_args, char *);
-				my_strlen = 0;
-
-				while (str[my_strlen] != '\0')
-					my_strlen++;
-
-				write(1, str, my_strlen);
-				compute += my_strlen;
-			}
+			op_putchar(format[_i]);
+			r_chars += 1;
 		}
-		format++;
 	}
-	va_end(final_args);
-	return (compute);
+	return (r_chars);
+}
+
+
+/**
+ * _printf - prints formatted output to the standard output stream
+ * @format: a string of characters and format specifiers
+ *
+ * Return: the number of characters printed (excluding the null byte)
+ */
+
+int _printf(const char *format, ...)
+{
+	int n;
+
+	arguments func_list[] = {
+		{"c", char_print},
+		{"s", string_print},
+		{"%", percent_print},
+		{NULL, NULL}
+	};
+	va_list list;
+
+	if (format == NULL)
+	{
+		return (-1);
+	}
+
+	va_start(list, format);
+	n = format_str(format, func_list, list);
+	va_end(list);
+	return (n);
 }
