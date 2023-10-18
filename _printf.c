@@ -12,6 +12,9 @@
 int _printf(const char *format, ...)
 {
 	int compute = 0;
+	char *str;
+	int my_strlen = 0;
+	char c;
 	va_list final_args;
 
 	if (format == NULL)
@@ -22,25 +25,26 @@ int _printf(const char *format, ...)
 	while (*format)
 	{
 		if (*format != '%')
+		{
 			write(1, format, 1);
-		compute++;
+			compute++;
+		}
 		else
 		{
 			format++;
 			if (*format == 'c')
-				char c = va_arg(final_args, int);
-
-			write(1, &c, 1);
-			compute++;
+			{
+				c = va_arg(final_args, int);
+				write(1, &c, 1);
+				compute++;
+			}
 			else if (*format == 's')
 			{
-				char *str = va_arg(final_args, char *);
-				int my_strlen = 0;
+				str = va_arg(final_args, char *);
+				my_strlen = 0;
 
 				while (str[my_strlen] != '\0')
-				{
 					my_strlen++;
-				}
 
 				write(1, str, my_strlen);
 				compute += my_strlen;
