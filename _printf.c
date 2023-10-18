@@ -1,37 +1,58 @@
-#include "main.h"
+#include <unistd.h>
 #include <stdarg.h>
+#include "main.h"
 
 /**
  * _printf - Custom printf function
- * @format: Format string containing format specifiers
- * @...: Additional arguments to be formatted and printed
- * Return: Number of characters printed
+ * @format: Format string
+ * @...: Variable number of arguments
+ *
+ * Return: Number of characters printed (excluding null byte)
  */
 int _printf(const char *format, ...)
 {
-	va_list args;
 	int compute = 0;
-	int (*printer)(va_list);
+	va_list final_args;
 
-	va_start(args, format);
+	if (format == NULL)
+		return (-1);
+
+	va_start(final_args, format);
 
 	while (*format)
 	{
-		if (*format == '%')
+		if (*format != '%')
 		{
-			format++;
-			printer = converter(*format);
-			if (printer)
-				compute += printer(args);
+			write(1, format, 1);
+			compute++;
 		}
 		else
 		{
-			op_putchar(*format);
-			compute++;
+			format++;
+			if (*format == 'c')
+			{
+				char c = va_arg(final_args, int);
+				write(1, &c, 1);
+				compute++;
+			}
+			else if (*format == 's')
+			{
+				char *str = va_arg(final_args, char *);
+				int my_strlen = 0;
+
+				while (str[my_strlen] != '\0')
+				{
+					my_strlen++;
+				}
+
+				write(1, str, my_strlen);
+				compute += my_strlen;
+			}
 		}
 		format++;
 	}
 
-	va_end(args);
+	va_end(final_args);
 	return (compute);
 }
+

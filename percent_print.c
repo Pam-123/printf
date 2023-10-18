@@ -1,13 +1,11 @@
 #include "main.h"
-#include <stdarg.h>
 
 /**
- * percent_print - Prints a percent character
- * @args: Argument list (unused)
- * Return: Number of characters printed (always 1 for '%')
+ * percent_print - print percentage
+ * Return: integer
  */
-int percent_print(va_list args)
+int percent_print(void)
 {
-	(void) args;
-	return (op_putchar('%'));
+	op_putchar(37);
+	return (1);
 }

@@ -1,23 +1,35 @@
 #include "main.h"
-#include <stdarg.h>
 
 /**
- * string_print - Prints a string
- * @args: Argument list containing the string to print
- * Return: Number of characters printed
+ * string_print - prints a string
+ * @args: argument
+ *
+ * Return: Length
  */
 int string_print(va_list args)
 {
-	char *str = va_arg(args, char *);
-	int compute = 0;
+	char *string;
+	int s;
+	int span;
 
-	if (str == NULL)
-		str = "(null)";
-
-	while (*str)
+	string = va_arg(args, char *);
+	if (string == NULL)
 	{
-		compute += op_putchar(*str);
-		str++;
+		string = "(null)";
+		span = _strlen(string);
+		for (s = 0; s < span; s++)
+		{
+			op_putchar(string[s]);
+		}
+		return (span);
 	}
-	return (compute);
+	else
+	{
+		span = _strlen(string);
+		for (s = 0; s < span; s++)
+		{
+			op_putchar(string[s]);
+		}
+		return (span);
+	}
 }

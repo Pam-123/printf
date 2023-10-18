@@ -1,8 +1,9 @@
-#include <unistd.h>
+#include "main.h"
 
 /**
- * op_putchar - tis prints chararter
+ * op_putchar - prints a char
  * @c: variable
+ *
  * Return: 0
  */
 int op_putchar(char c)
