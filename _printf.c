@@ -22,19 +22,16 @@ int _printf(const char *format, ...)
 	while (*format)
 	{
 		if (*format != '%')
-		{
 			write(1, format, 1);
-			compute++;
-		}
+		compute++;
 		else
 		{
 			format++;
 			if (*format == 'c')
-			{
 				char c = va_arg(final_args, int);
-				write(1, &c, 1);
-				compute++;
-			}
+
+			write(1, &c, 1);
+			compute++;
 			else if (*format == 's')
 			{
 				char *str = va_arg(final_args, char *);
@@ -55,4 +52,3 @@ int _printf(const char *format, ...)
 	va_end(final_args);
 	return (compute);
 }
-
