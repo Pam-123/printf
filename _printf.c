@@ -69,6 +69,8 @@ int _printf(const char *format, ...)
 		{"c", char_print},
 		{"s", string_print},
 		{"%", percent_print},
+		{"d", decimal_print},
+		{"i", decimal_print},
 		{NULL, NULL}
 	};
 	va_list list;
