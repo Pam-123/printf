@@ -22,7 +22,7 @@ int decimal_print(va_list final_args)
 		x *= 10;
 	}
 
-	while (x > 1)
+	while (x >= 1)
 	{
 		op_putchar('0' + (number / x) % 10);
 		x /= 10;
