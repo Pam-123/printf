@@ -20,6 +20,7 @@ int char_print(va_list args);
 int rev_print(va_list final_args);
 int up_printf(const char *format, ...);
 int rot13_print(va_list final_args);
+int address_print(va_list final_args);
 int percent_print(void);
 int _strlen(char *str);
 int _strlenop(const char *str);

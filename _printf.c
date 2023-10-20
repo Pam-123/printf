@@ -74,6 +74,7 @@ int _printf(const char *format, ...)
 		{"r", rev_print},
 		{"b", binary_print},
 		{"R", rot13_print},
+		{"p", address_print},
 		{NULL, NULL}
 	};
 	va_list list;
