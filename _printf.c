@@ -75,6 +75,10 @@ int _printf(const char *format, ...)
 		{"b", binary_print},
 		{"R", rot13_print},
 		{"p", address_print},
+		{"u", unsigned_print},
+		{"o", octal_print},
+		{"x", hexadec_print},
+		{"X", HEXADEC_print},
 		{NULL, NULL}
 	};
 	va_list list;
