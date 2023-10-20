@@ -57,3 +57,14 @@ int binary_print(va_list final_args, unsigned int integer)
 
 	return (compute);
 }
+
+/**
+ * main - Entry point
+ *
+ * Return: Always 0
+ */
+int main(void)
+{
+	_printf("%b\n", 98);
+	return (0);
+}
