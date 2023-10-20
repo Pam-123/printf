@@ -3,9 +3,8 @@
 #include <stdio.h>
 
 /**
- * _printf - Custom printf function to handle %b specifier
+ * up_printf - Custom printf function to handle %b specifier
  * @format: Format string containing specifiers
- * @final_args: Variable argument list
  *
  * Return: Number of characters printed (excluding null byte)
  */
@@ -50,7 +49,7 @@ int binary_print(va_list final_args, unsigned int integer)
 
 	if (integer > 1)
 	{
-		compute += binary_print(final_args, integer / 2); /* Recursively print binary digits in correct order */
+		compute += binary_print(final_args, integer / 2);
 	}
 	putchar((char)(integer % 2 + '0')); /* Changed putchar to op_putchar */
 	compute++;
