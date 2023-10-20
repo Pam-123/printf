@@ -72,6 +72,10 @@ int _printf(const char *format, ...)
 		{"d", decimal_print},
 		{"i", decimal_print},
 		{"r", rev_print},
+		{"u", u_print},
+		{"o", o_print},
+		{"x", x_print},
+		{"X", X_print},
 		{NULL, NULL}
 	};
 	va_list list;
