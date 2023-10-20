@@ -73,6 +73,7 @@ int _printf(const char *format, ...)
 		{"i", decimal_print},
 		{"r", rev_print},
 		{"b", binary_print},
+		{"R", rot13_print},
 		{NULL, NULL}
 	};
 	va_list list;

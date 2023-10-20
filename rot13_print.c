@@ -6,7 +6,7 @@
  * Return: the encoded string
  */
 
-int print_rot13(va_list final_args)
+int rot13_print(va_list final_args)
 {
 	char icons[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char update[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
