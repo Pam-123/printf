@@ -15,13 +15,9 @@ typedef struct arg
 
 int format_str(const char *format, arguments func_list[], va_list list);
 int decimal_print(va_list final_args);
-int binary_print(va_list final_args);
+int binary_print(va_list final_args, unsigned int integer);
 int char_print(va_list args);
 int rev_print(va_list final_args);
-int u_print(va_list final_args);
-int o_print(va_list final_args);
-int x_print(va_list final_args);
-int X_print(va_list final_args);
 int percent_print(void);
 int _strlen(char *str);
 int _strlenop(const char *str);
