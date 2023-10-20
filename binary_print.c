@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			op_putchar(*su_ptr); /* Changed putchar to op_putchar */
+			putchar(*su_ptr); /* Changed putchar to op_putchar */
 			compute++;
 		}
 	}
@@ -52,9 +52,8 @@ int binary_print(va_list final_args, unsigned int integer)
 	{
 		compute += binary_print(final_args, integer / 2); /* Recursively print binary digits in correct order */
 	}
-	op_putchar((char)(integer % 2 + '0')); /* Changed putchar to op_putchar */
+	putchar((char)(integer % 2 + '0')); /* Changed putchar to op_putchar */
 	compute++;
 
 	return (compute);
 }
-
