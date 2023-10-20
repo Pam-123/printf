@@ -74,8 +74,8 @@ int _printf(const char *format, ...)
 		{"r", rev_print},
 		{"u", u_print},
 		{"o", o_print},
-		{"x", x_print},
-		{"X", X_print},
+		{"x", hexadecimal_print},
+		{"X", hexadecimal_print},
 		{NULL, NULL}
 	};
 	va_list list;
