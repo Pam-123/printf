@@ -18,6 +18,7 @@ int decimal_print(va_list final_args);
 int binary_print(va_list final_args, unsigned int integer);
 int char_print(va_list args);
 int rev_print(va_list final_args);
+int up_printf(const char *format, ...);
 int percent_print(void);
 int _strlen(char *str);
 int _strlenop(const char *str);

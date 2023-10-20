@@ -9,7 +9,7 @@
  *
  * Return: Number of characters printed (excluding null byte)
  */
-int _printf(const char *format, ...)
+int up_printf(const char *format, ...)
 {
 	va_list final_args;
 	int compute = 0;
@@ -56,15 +56,4 @@ int binary_print(va_list final_args, unsigned int integer)
 	compute++;
 
 	return (compute);
-}
-
-/**
- * main - Entry point
- *
- * Return: Always 0
- */
-int main(void)
-{
-	_printf("%b\n", 98);
-	return (0);
 }
