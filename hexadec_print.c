@@ -1,90 +1,90 @@
 #include "main.h"
 
 /**
- * hexadec_print - function that converts integer to hexadecimal
- * @final_args: the argument in the va_list
+ * hexadec_print - function that converts to hexadecimal
+ * @final_args: the argment in the va_list
  * Return: the length of the hexadecimal number
  */
 
 int hexadec_print(va_list final_args)
 {
-	int w, s, x;
-	unsigned int unit, size;
+	int b, n, m;
+	unsigned int number, size;
 	char *len;
 
-	unit = va_arg(final_args, unsigned int);
+	number = va_arg(final_args, unsigned int);
 
-	if (unit == 0)
+	if (number == 0)
 	{
 		op_putchar('0');
 		return (1);
 	}
 
-	size = unit;
-	for (w = 0; size > 0; w++)
+	size = number;
+	for (b = 0; size > 0; b++)
 	{
 		size = size / 16;
 	}
-	len = malloc((sizeof(char) * w) + 1);
+	len = malloc((sizeof(char) * b) + 1);
 	if (len == NULL)
 		return (-1);
-	for (s = 0; unit > 0; s++)
+	for (n = 0; number > 0; n++)
 	{
-		if ((unit % 16) < 10)
-			len[s] = (unit % 16) + 48;
+		if ((number % 16) < 10)
+			len[n] = (number % 16) + 48;
 		else
-			len[s] = (unit % 16) + 55;
-		unit = unit / 16;
+			len[n] = (number % 16) + 55;
+		number = number / 16;
 	}
-	for (x = (s - 1); x >= 0; x--)
+	for (m = (n - 1); m >= 0; m--)
 	{
-		op_putchar(len[x]);
+		op_putchar(len[m]);
 	}
 	free(len);
-	return (w);
+	return (b);
 }
 
+
 /**
- * HEXADEC_print - function that converts integer to hexadecimal
- * @final_args: the argument in the va_list
+ * HEXADEC_print - function that converts to hexadecimal
+ * @final_args: the argment in the va_list
  * Return: the length of the hexadecimal number
  */
 
 int HEXADEC_print(va_list final_args)
 {
-	int w, s, x;
-	unsigned int unit, size;
+	int b, n, m;
+	unsigned int number, size;
 	char *len;
 
-	unit = va_arg(final_args, unsigned int);
+	number = va_arg(final_args, unsigned int);
 
-	if (unit == 0)
+	if (number == 0)
 	{
 		op_putchar('0');
 		return (1);
 	}
 
-	size = unit;
-	for (w = 0; size > 0; w++)
+	size = number;
+	for (b = 0; size > 0; b++)
 	{
 		size = size / 16;
 	}
-	len = malloc((sizeof(char) * w) + 1);
+	len = malloc((sizeof(char) * b) + 1);
 	if (len == NULL)
 		return (-1);
-	for (s = 0; unit > 0; s++)
+	for (n = 0; number > 0; n++)
 	{
-		if ((unit % 16) < 10)
-			len[s] = (unit % 16) + 48;
+		if ((number % 16) < 10)
+			len[n] = (number % 16) + 48;
 		else
-			len[s] = (unit % 16) + 87;
-		unit = unit / 16;
+			len[n] = (number % 16) + 87;
+		number = number / 16;
 	}
-	for (x = (s - 1); x >= 0; x--)
+	for (m = (n - 1); m >= 0; m--)
 	{
-		op_putchar(len[x]);
+		op_putchar(len[m]);
 	}
 	free(len);
-	return (w);
+	return (b);
 }
-
