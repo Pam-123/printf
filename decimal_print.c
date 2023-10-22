@@ -10,7 +10,7 @@ int decimal_print(va_list final_args)
 {
 	int i = 0, x = 1, sum = 0;
 	unsigned int number = va_arg(final_args, int);
-	
+
 	if ((int)number < 0)
 	{
 		number *= -1;

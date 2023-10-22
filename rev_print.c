@@ -2,8 +2,8 @@
 
 
 /**
- * rev_string - Reverses a string
- * @pfList: the argument in the va_list
+ * rev_print - Reverses a string
+ * @final_args: the argument in the va_list
  * Return: the length of the string
  */
 

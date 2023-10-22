@@ -1,34 +1,49 @@
 #include "main.h"
 
 /**
- * address_print - function that prints the address of a given variable
- * @final_args: the argument in the va_list
- * Return: the length of the address
+ * address_print - Print the address of a given variable.
+ * @final_args: The argument in the va_list.
+ *
+ * Return: The length of the address.
  */
 int address_print(va_list final_args)
 {
-	unsigned int inscription[16];
-	unsigned int b = 0, amount = 0;
-	int compute = 0;
-	unsigned long n;
-	unsigned long m = 1152921504606846976;
-	char *line = "(nil)";
-
-	n = va_arg(final_args, unsigned long);
+	int b;
+	unsigned long n = va_arg(final_args, unsigned long);
 
 	if (n == 0)
 	{
+		char *line = "(nil)";
+		int compute = 0;
+
 		for (b = 0; line[b]; b++)
 		{
 			op_putchar(line[b]);
 			compute++;
 		}
+
 		return (compute);
 	}
 
 	op_putchar('0');
 	op_putchar('x');
-	compute = 2;
+
+	return (print_address_digits(n));
+}
+
+/**
+ * print_address_digits - Print the address digits.
+ * @n: The address to print.
+ *
+ * Return: The length of the printed address.
+ */
+int print_address_digits(unsigned long n)
+{
+	unsigned int inscription[16];
+	int b = 0, amount = 0;
+	int compute = 2;
+	unsigned long m = 1152921504606846976;
+
 	inscription[0] = n / m;
 
 	for (b = 1; b < 16; b++)
@@ -49,6 +64,7 @@ int address_print(va_list final_args)
 			compute++;
 		}
 	}
+
 	return (compute);
 }
 

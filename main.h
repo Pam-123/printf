@@ -23,6 +23,7 @@ int rot13_print(va_list final_args);
 int address_print(va_list final_args);
 int unsigned_print(va_list final_args);
 int percent_print(void);
+int print_address_digits(unsigned long n);
 int _strlen(char *str);
 int _strlenop(const char *str);
 int string_print(va_list args);
