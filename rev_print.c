@@ -1,23 +1,32 @@
 #include "main.h"
-#include <stdlib.h>
-#include <string.h>
+
 
 /**
- * rev_print - Reverses a string
- * @final_args: Input string
- * Return: Length of the reversed string
+ * rev_string - Reverses a string
+ * @pfList: the argument in the va_list
+ * Return: the length of the string
  */
+
 int rev_print(va_list final_args)
 {
-	char *s = va_arg(final_args, char *);
-	int f;
-	int k = 0;
 
+	int span = 0, b = 0;
+	char *s;
+
+	s = va_arg(final_args, char *);
 	if (s == NULL)
-		s = "(null)";
-	while (s[k] != '\0')
-		k++;
-	for (f = k - 1; f >= 0; f++)
-		op_putchar(s[f]);
-	return (k);
+	{
+		s = ")llun(";
+	}
+	while (s[span] != '\0')
+	{
+		span++;
+	}
+	span--;
+	for (; span >= 0; span--)
+	{
+		op_putchar(s[span]);
+		b++;
+	}
+	return (b);
 }
