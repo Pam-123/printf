@@ -17,7 +17,7 @@ int octal_print(va_list final_args)
 
 	if (octal_unit == 0)
 	{
-		op_putchar('0);
+		op_putchar('0');
 		return (1);
 	}
 	length = 0;

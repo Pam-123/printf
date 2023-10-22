@@ -13,11 +13,13 @@ int hexadec_print(va_list final_args)
 	char *hexa_length;
 
 	unit = va_arg(final_args, unsigned int);
+
 	if (unit == 0)
 	{
 		op_putchar('0');
 		return (1);
 	}
+
 	length = unit;
 	while (length > 0)
 	{
@@ -25,7 +27,7 @@ int hexadec_print(va_list final_args)
 		w++;
 	}
 	hexa_length = malloc(sizeof(char) * w + 1);
-	if (heax_length == NULL)
+	if (hexa_length == NULL)
 		return (-1);
 
 	while (a < w)
@@ -37,6 +39,7 @@ int hexadec_print(va_list final_args)
 		unit = unit / 16;
 		a++;
 	}
+
 	while (s < a)
 	{
 		op_putchar(hexa_length[s]);
@@ -45,26 +48,7 @@ int hexadec_print(va_list final_args)
 	free(hexa_length);
 	return (w);
 }
-if (hexa_length == NULL)
-	return (-1);
 
-	while (a < w)
-{
-	if ((unit % 16) < 10)
-		hexa_length[a] = (unit % 16) + '0';
-	else
-		hexa_length[a] = (unit % 16) + '7';
-	unit = unit / 16;
-	a++;
-}
-while (s < a)
-{
-	op_putchar(hexa_length[s]);
-	s++;
-}
-free(hexa_length);
-return (w);
-}
 /**
  * HEXADEC_print - prints an integer in hexadecimal
  * @final_args: list of arguments
@@ -77,11 +61,13 @@ int HEXADEC_print(va_list final_args)
 	char *hexa_length;
 
 	unit = va_arg(final_args, unsigned int);
+
 	if (unit == 0)
 	{
 		op_putchar('0');
 		return (1);
 	}
+
 	length = unit;
 	while (length > 0)
 	{
@@ -94,12 +80,13 @@ int HEXADEC_print(va_list final_args)
 	while (a < w)
 	{
 		if ((unit % 16) < 10)
-			gexa_length[a] = (unit % 16) + '0';
+			hexa_length[a] = (unit % 16) + '0';
 		else
 			hexa_length[a] = (unit % 16) + '7';
 		unit = unit / 16;
 		a++;
 	}
+
 	while (s < a)
 	{
 		op_putchar(hexa_length[s]);
@@ -108,3 +95,4 @@ int HEXADEC_print(va_list final_args)
 	free(hexa_length);
 	return (w);
 }
+
