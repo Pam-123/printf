@@ -28,5 +28,9 @@ int _strlenop(const char *str);
 int string_print(va_list args);
 int _printf(const char *format, ...);
 int op_putchar(char c);
+int hexadec_print(va_list final_args);
+int HEXADEC_print(va_list final_args);
+int unsigned_print(va_list final_args);
+int octal_print(va_list final_args);
 
 #endif
